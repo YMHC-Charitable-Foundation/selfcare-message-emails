@@ -95,10 +95,10 @@ def create_email_content(message, activities, resource, background_filename):
         background-color: {COLOR_MAIN}; 
         color: white; 
         text-align: center; 
-        padding: 40px 20px; 
         border-radius: 20px; 
         margin-bottom: 20px;
         position: relative;
+        min-height: 300px;
         {bg_style}
         background-size: cover;
         background-position: center;
@@ -139,8 +139,13 @@ def create_email_content(message, activities, resource, background_filename):
 
         <!-- Block A: Daily Message -->
         <div class="message-block">
-            <div class="section-title">Daily Message of Support</div>
-            <div class="message-text">“{message}”</div>
+            <table width="100%" style="min-height: 300px; height: 100%; border-collapse: collapse;">
+                <tr>
+                    <td align="center" valign="middle" style="padding: 40px 20px;">
+                        <div class="message-text">“{message}”</div>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <!-- Block B: Self-care Activities -->
@@ -148,7 +153,7 @@ def create_email_content(message, activities, resource, background_filename):
         {activities_html}
 
         <!-- Block C: Resource -->
-        <div class="section-title" style="margin-top: 30px;">Featured Resource</div>
+        <div class="section-title" style="margin-top: 30px;">Featured Free Resource</div>
         <div class="resource-card">
             <h3 class="resource-title">{resource['service_title']}</h3>
             <p class="resource-desc">{resource['description']}</p>
@@ -170,7 +175,8 @@ def create_email_content(message, activities, resource, background_filename):
         <div class="footer">
             <p><strong>Safety Note:</strong> If you or someone you know is in immediate danger, please call emergency services or a crisis helpline immediately. This email is a message of support, not a substitute for professional help.</p>
             <p>You received this message because you are subscribed to the Google Groups "Daily Messages of Support" group.<br>
-            To unsubscribe from this group and stop receiving emails from it, send an email to <a href="mailto:daily-message-support+unsubscribe@ymhc.ngo" style="color: {COLOR_MAIN}">daily-message-support+unsubscribe@ymhc.ngo</a>.</p>
+            To unsubscribe from this group and stop receiving emails from it, send an email to <a href="mailto:daily-message-support+unsubscribe@ymhc.ngo" style="color: {COLOR_MAIN}">daily-message-support+unsubscribe@ymhc.ngo</a>.<br>
+            YMHC is a registered charity. BN: 771374915RR0001. Your donations are tax deductible. <a href="https://www.canadahelps.org/en/charities/ymhc-charitable-foundation/" style="color: {COLOR_MAIN}">Make a donation</a>. <a href="https://www.canadahelps.org/en/tax-time/" style="color: {COLOR_MAIN}">Tax Credit Information</a>.</p>
         </div>
     </div>
 </body>
@@ -214,8 +220,6 @@ def send_email():
 
     # Plain text fallback
     plain_text = f"""
-Daily Message of Support
-
 "{msg_text}"
 
 Today's Self-Care Activities:
