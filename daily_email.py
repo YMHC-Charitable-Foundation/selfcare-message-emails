@@ -232,24 +232,14 @@ def send_email():
     
     # Email Setup
     sender_email = os.environ.get('EMAIL_USER')
-    recipient_env = os.environ.get('RECIPIENT_EMAIL')
+    recipient_email = os.environ.get('RECIPIENT_EMAIL')
     smtp_server = os.environ.get('EMAIL_HOST')
     smtp_port = int(os.environ.get('EMAIL_PORT') or 587)
     smtp_password = os.environ.get('EMAIL_PASSWORD')
 
-    # Handle multiple recipients
-    if recipient_env:
-        # Replace semicolons with commas to support both standard separators
-        # Split by comma and strip whitespace
-        recipient_emails = [email.strip() for email in recipient_env.replace(';', ',').split(',') if email.strip()]
-        recipient_header = ', '.join(recipient_emails)
-    else:
-        recipient_emails = []
-        recipient_header = ""
-
     missing_vars = []
     if not sender_email: missing_vars.append('EMAIL_USER')
-    if not recipient_emails: missing_vars.append('RECIPIENT_EMAIL')
+    if not recipient_email: missing_vars.append('RECIPIENT_EMAIL')
     if not smtp_server: missing_vars.append('EMAIL_HOST')
     if not smtp_password: missing_vars.append('EMAIL_PASSWORD')
 
@@ -261,7 +251,7 @@ def send_email():
     msg = MIMEMultipart('related')
     msg['Subject'] = f"Daily Message of Support - {datetime.date.today().strftime('%B %d, %Y')}"
     msg['From'] = f"Youth Mental Health Canada <{sender_email}>"
-    msg['To'] = recipient_header
+    msg['To'] = recipient_email
 
     msg_alternative = MIMEMultipart('alternative')
     msg.attach(msg_alternative)
