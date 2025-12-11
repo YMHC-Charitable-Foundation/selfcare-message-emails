@@ -1,0 +1,37 @@
+[
+    {
+        "service_title": "Heart-to-Heart",
+        "description": "A national peer-support initiative where students and schools can request handmade hearts with messages of care and encouragement for students who are absent from school due to mental health challenges. Participation and requests are free.",
+        "link": "https://ymhc.ngo/pages/heart-to-heart-campaign"
+    },
+    {
+        "service_title": "YMHC Blog – Mental Health Awareness & Education",
+        "description": "A free public blog featuring articles on youth mental health, wellness, disability awareness, suicide prevention, and key awareness days. Content is designed for students, families, educators, and community members.",
+        "link": "https://ymhc.ngo/blogs/news"
+    },
+    {
+        "service_title": "Mental Health Awareness Videos",
+        "description": "Free educational videos shared by YMHC featuring youth, educators, and community voices on mental health, wellness, coping strategies, lived experience, and stigma reduction.",
+        "link": "https://www.youtube.com/@YouthMentalHealthCanada"
+    },
+    {
+        "service_title": "Social Media with Mental Health Resources",
+        "description": "Daily and weekly mental health education posts, awareness campaigns, and supportive content shared through YMHC’s public social media platforms to reach youth and communities across Canada and internationally.",
+        "link": "https://linktr.ee/ymhc"
+    },
+    {
+        "service_title": "Compassionate Card Service",
+        "description": "A free service that provides compassionate cards with supportive messages for students and young people who are struggling with mental health challenges, school attendance issues, or difficult life circumstances.",
+        "link": "https://ymhc.ngo/pages/compassionate-card-service"
+    },
+    {
+        "service_title": "YMHC School and Community Peer Support Program",
+        "description": "A free peer-support initiative designed to help schools and communities create safe, inclusive peer support teams that reduce isolation, increase belonging, and strengthen mental wellness protective factors.",
+        "link": "https://ymhc.ngo/pages/ymhc-school-and-community-peer-support-program"
+    },
+    {
+        "service_title": "YMHC Monthly Newsletter",
+        "description": "A free monthly newsletter featuring mental health resources, tips, and information on youth mental health and wellness.",
+        "link": "https://ymhc.substack.com/"
+    }
+]
