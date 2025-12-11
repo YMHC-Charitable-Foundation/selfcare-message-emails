@@ -133,7 +133,7 @@ def create_email_content(message, activities, resource, background_filename):
                                     <tr>
                                         <!-- Fallback color if image fails or for overlay effect -->
                                         <td align="center" valign="middle" height="300" style="padding: 40px 20px; color: #ffffff; font-family: Helvetica, Arial, sans-serif; font-size: 24px; font-weight: bold; line-height: 1.5; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                                            “{message}”
+                                            {message}
                                         </td>
                                     </tr>
                                 </table>
