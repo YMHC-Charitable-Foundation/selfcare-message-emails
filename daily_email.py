@@ -78,7 +78,7 @@ def create_email_content(message, activities, resource, background_filename):
         activities_html += f"""
         <tr>
             <td style="padding-bottom: 10px;">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="border-radius: 10px; border-left: 5px solid {COLOR_MAIN};">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="{COLOR_BG}" style="border-radius: 10px; border-left: 5px solid {COLOR_MAIN};">
                     <tr>
                         <td style="padding: 15px; font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: {COLOR_TEXT}; line-height: 1.4;">
                             {activity}
@@ -153,7 +153,7 @@ def create_email_content(message, activities, resource, background_filename):
                         <!-- Resource Section -->
                         <tr>
                             <td style="padding: 20px;" class="mobile-padding">
-                                <h2 style="color: {COLOR_MAIN}; font-family: Helvetica, Arial, sans-serif; font-size: 20px; text-align: center; margin-top: 10px; margin-bottom: 20px;">Featured Free Resource</h2>
+                                <h2 style="color: {COLOR_MAIN}; font-family: Helvetica, Arial, sans-serif; font-size: 20px; text-align: center; margin-top: 10px; margin-bottom: 20px;">Featured Free Resources</h2>
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border: 1px solid #e1e1e1; border-radius: 15px;">
                                     <tr>
                                         <td style="padding: 25px;">
@@ -183,6 +183,7 @@ def create_email_content(message, activities, resource, background_filename):
                                         <td align="center" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; font-weight: bold;">
                                             <a href="https://instagram.com/youth_mental_health" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">Instagram</a> |
                                             <a href="https://tiktok.com/@youthmentalhealthaction" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">TikTok</a> |
+                                            <a href="https://bsky.app/profile/ymhc.ngo" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">Bluesky</a> |
                                             <a href="https://www.facebook.com/YMHCanada" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">Facebook</a> |
                                             <a href="https://www.threads.com/@youth_mental_health" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">Threads</a> |
                                             <a href="https://www.youtube.com/channel/UC4DmXoL0nA83nFWBfZg1t-A" style="color: {COLOR_MAIN}; text-decoration: none; margin: 0 5px;">YouTube</a> |
@@ -229,6 +230,12 @@ def send_email():
     
     # Create HTML
     html_content, logo_cid = create_email_content(msg_text, daily_acts, resource, background_filename)
+
+    # Save local preview (for debugging/verification)
+    preview_html = html_content.replace(f'cid:{logo_cid}', 'data/img/logo-transparent.png')
+    with open('preview.html', 'w', encoding='utf-8') as f:
+        f.write(preview_html)
+    print("Generated preview.html")
     
     # Email Setup
     sender_email = os.environ.get('EMAIL_USER')
