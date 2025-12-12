@@ -58,7 +58,7 @@ def pick_daily_content(messages, activities, resources, backgrounds):
 
 def create_email_content(message, activities, resource, background_filename):
     # IDs for inline images
-    logo_cid = make_msgid(domain='ymhc.ngo')[1:-1]
+    logo_url = f"{REPO_RAW_URL}/data/img/logo-transparent.png"
     
     # Background URL logic
     # Outlook and some others don't support background-image well on non-body elements without VML.
@@ -122,7 +122,7 @@ def create_email_content(message, activities, resource, background_filename):
                         <!-- Header / Logo -->
                         <tr>
                             <td align="center" style="padding: 30px 20px;">
-                                <img src="cid:{logo_cid}" alt="YMHC Logo" width="200" style="width: 200px; max-width: 100%; height: auto; display: block; border: 0;" />
+                                <img src="{logo_url}" alt="YMHC Logo" width="200" style="width: 200px; max-width: 100%; height: auto; display: block; border: 0;" />
                             </td>
                         </tr>
 
@@ -221,7 +221,7 @@ def create_email_content(message, activities, resource, background_filename):
 </body>
 </html>
     """
-    return html_content, logo_cid
+    return html_content
 
 def send_email():
     # Load data
@@ -229,12 +229,11 @@ def send_email():
     msg_text, daily_acts, resource, background_filename = pick_daily_content(messages, activities, resources, backgrounds)
     
     # Create HTML
-    html_content, logo_cid = create_email_content(msg_text, daily_acts, resource, background_filename)
+    html_content = create_email_content(msg_text, daily_acts, resource, background_filename)
 
     # Save local preview (for debugging/verification)
-    preview_html = html_content.replace(f'cid:{logo_cid}', 'data/img/logo-transparent.png')
     with open('preview.html', 'w', encoding='utf-8') as f:
-        f.write(preview_html)
+        f.write(html_content)
     print("Generated preview.html")
     
     # Email Setup
@@ -279,16 +278,7 @@ Featured Resource:
     msg_alternative.attach(MIMEText(plain_text, 'plain'))
     msg_alternative.attach(MIMEText(html_content, 'html'))
 
-    # Attach Images
-    # Logo
-    try:
-        with open(IMAGES_DIR / 'logo-transparent.png', 'rb') as img:
-            mime_logo = MIMEImage(img.read())
-            mime_logo.add_header('Content-ID', f'<{logo_cid}>')
-            mime_logo.add_header('Content-Disposition', 'inline')
-            msg.attach(mime_logo)
-    except FileNotFoundError:
-        print("Warning: Logo image not found.")
+
 
     # Send
     try:
