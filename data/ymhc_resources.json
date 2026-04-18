@@ -53,5 +53,25 @@
         "service_title": "YMHC Monthly Newsletter",
         "description": "A free monthly newsletter featuring mental health resources, tips, and information on youth mental health and wellness.",
         "link": "https://ymhc.substack.com/"
+    },
+    {
+        "service_title": "YMHC Self-Care Toolkit",
+        "description": "Plan your month, set daily goals, and more.",
+        "link": "https://selfcare.ymhc.ngo/"
+    },
+    {
+        "service_title": "Monthly Self-Care Planner",
+        "description": "Plan your month with drag-and-drop activities, then print a focused planner view.",
+        "link": "https://selfcare.ymhc.ngo/monthly-calendar/"
+    },
+    {
+        "service_title": "Daily Goal Setting Tool",
+        "description": "Track supportive daily actions by category and keep momentum one day at a time.",
+        "link": "https://selfcare.ymhc.ngo/daily-goal-setting/"
+    },
+    {
+        "service_title": "Feelings Wheel",
+        "description": "Supporting emotional literacy by linking feelings with thoughts, body sensations, and behaviors for personal reflection or guided sessions.",
+        "link": "https://selfcare.ymhc.ngo/feelings-wheel/"
     }
 ]
