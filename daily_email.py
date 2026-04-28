@@ -21,7 +21,7 @@ BACKGROUNDS_DIR = DATA_DIR / 'backgrounds'
 MESSAGES_FILE = DATA_DIR / 'messages_of_support.txt'
 ACTIVITIES_FILE = DATA_DIR / 'selfcare_activities.txt'
 RESOURCES_FILE = DATA_DIR / 'ymhc_resources.json'
-REPO_RAW_URL = "https://raw.githubusercontent.com/YMHC-Charitable-Foundation/selfcare-message-emails/refs/heads/main"
+REPO_RAW_URL = "https://cdn.jsdelivr.net/gh/YMHC-Charitable-Foundation/selfcare-message-emails@refs/heads/main"
 
 # Colors
 COLOR_MAIN = "#0f777c"
