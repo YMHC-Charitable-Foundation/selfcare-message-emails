@@ -9,6 +9,9 @@ on:
     - cron: '30 14 * * *'
   workflow_dispatch:  # Allows manual triggering
 
+permissions:
+  contents: write
+
 jobs:
   send-email:
     runs-on: ubuntu-latest
@@ -34,3 +37,20 @@ jobs:
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: python daily_email.py
+
+      # GitHub disables scheduled workflows after 60 days without any repository
+      # activity (commits/pushes). This step records the last successful run,
+      # which counts as activity and keeps the schedule from being auto-disabled.
+      - name: Record last successful run
+        run: |
+          mkdir -p .github/data
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/data/last_run.txt
+
+      - name: Commit last run marker
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/data/last_run.txt
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: record last successful daily email run [skip ci]"
+          git push
